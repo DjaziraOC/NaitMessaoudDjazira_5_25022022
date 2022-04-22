@@ -1,32 +1,18 @@
 /*--------------Récupération et affichage des produits (articles)---------------------------------
-    -le but est d'aller au JSONPlaceholder pour récupérer et afficher tous les produits
-    -On utilise du java fonctionnel pour éviter de mettre des variable dans le socle de base 
-    -3 fonctions principales
-*/
-/*--------------1-la fonction main pour contenir le code de base-------------------------------------------------------
-    function main() contient le code de base qui va être excuter pour télécharger 
-    la page  (récupération et d'affichage de tous les produits)
-    premièrement il faut récupérer les données sur la web API de JSONPlacerholde grâce à la fonction getProducts() pour récupérer les données
-    deuxièment afficher tous les produits grâce à la fonction displayProducts
+    -Le but est de récupérer les données sur la web API de JSON Placerholder 
+    grâce à la fonction getProducts() pour afficher par suite tous les 
+    produits grâce à la fonction displayProducts
+    -On utilise du java fonctionnel pour éviter de mettre des variable dans le socle de base    
 */
 
-main()// on appel la fonction main
-
-async function main(){// donc on transforme la fonction  en sync
-    
+displayProducts()
+main()
+async function main(){// donc on transforme la fonction  en sync    
     const products = await getProducts()//L'opérateur await permet d'attendre la résolution d'une promesse, il faut l'excuté que dans la fonction en asyncr  donc on transforme la fonction main en sync
-        console.log(products) // pour verifier 
-
-    window.onload = () => { // window.onload permet de charger la page avant que le code soit éxécut 
-        //la boucle for permet d'afficher tous les objets dans la page web
-        for (let i =0;  i< products.length; i++) {
-            const product = products[i];
-            displayProducts(product)  
-        }
-    }
+    console.log(products) // pour verifier 
 }
 
-//--------------2-la fonction getProducts() pour récuperer les produits-----------------------------------------------   
+//---------------La fonction getProducts() pour récuperer les produits-----------------------------------------------   
 /*on récupére tous les produits  grâce à une fonction qu'on va appeler getProducts
     la Méthode fetch()returne une promesse, si elle passe et quand on pourra éxploiter
     et sans précision, elle utilise d'office la méthode get(c'est-à-dire rechercher les données sur le serveur)
@@ -66,13 +52,17 @@ function getProducts(){//on récupére tous les produits  grâce à une fonction
     //.catch qui prend une fonction avec une error 
     .catch(function(error){ //la méthode .catch() renvoie une erreur 
         window.alert(error)// donc on va afficher un méssage d'erreur à l'utilisateur si notre fetch n'arrive pas à sa distination 
-    }) 
-    
+    })     
 }
-//--------3-la fonction displayProducts pour afficher les produits--------
+//----------La fonction displayProducts pour afficher les produits--------
+  
+async function displayProducts(){
+
+    const products = await getProducts()
     
-function displayProducts(product){
-    
+    for (let i =0;  i< products.length; i++) {
+        const product = products[i];
+         
     //Insertion de l'élément "a"
     let productLinks = document.createElement("a");
     document.querySelector(".items").appendChild(productLinks);
@@ -99,14 +89,8 @@ function displayProducts(product){
     productArticle.appendChild(productDescription);
     productDescription.classList.add("productName");
     productDescription.innerHTML = product.description;
+    }
 }
-
-
-
-
-
-
-
 
 
 
