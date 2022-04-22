@@ -41,8 +41,8 @@ function getUrlId(){
             ►avec fetch/GET en mettant la valeur de l'id à la fin de URL
             Insérer et afficher un produit et ses détails dans la page product-------------
 */
-    //Récupération des sélecteurs 
 
+//Récupération des sélecteurs 
 let titleProduct = document.getElementById("title");
 let priceProduct = document.getElementById("price");
 let descriptionProduct = document.getElementById("description");
