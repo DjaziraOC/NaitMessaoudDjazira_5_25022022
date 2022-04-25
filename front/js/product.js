@@ -162,9 +162,7 @@ function localStorageProduct(){
         console.log(basket);//null
         //fenêtre pop-up
         const popupConfirmation =() =>{
-            if(window.confirm(` Un nouveau produit de ${name} (${optionColors}) a été ajouté au panier !
-                Pour consulter votre panier, cliquez sur OK`)){
-                window.location.assign("cart.html");
+            if(alert(` Un nouveau produit de ${name} (${optionColors}) a été ajouté au panier !`)){
             }
         }
 
@@ -197,10 +195,8 @@ function localStorageProduct(){
                 console.log(basket);
 
                 //fenêtre pop-up
-                window.confirm(`La quantité de votre produit de ${name} (${optionColors}) a été modifié
-                    Pour consulter votre panier, cliquez sur OK`)
-                window.location.assign("cart.html");
-                        
+                window.alert(`La quantité de votre produit de ${name} (${optionColors}) a été modifié`)
+                     
             //Si le produit commandé n'est pas dans le panier
             } else {
                 //on pousse le produit dans le tableau 
@@ -233,7 +229,9 @@ function localStorageProduct(){
             //fenêtre pop-up
             popupConfirmation();
         }
-    }   
+    }else{
+        alert(`Veuillez sélectionner la couleur et la quantité de produit à ajouter au panier`)
+    }  
 }
 
 

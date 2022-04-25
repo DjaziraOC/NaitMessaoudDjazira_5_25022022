@@ -405,10 +405,10 @@ function getForm(addProducts) {
     // (controlValiderFirstName() && controlValiderLastName() && controlValiderAddress() && controlValiderCity() && controleValiderMail()){
 
         if (FirstNameControlValider() && LastNameControlValider() && AddressControlValider() && CityControlValider() && EmailControleValider()){
-            //mettre l'objet de contact dans le localStorage
+            //envoi objet de contact dans le localStorage
             localStorage.setItem("contact",JSON.stringify(contact)) 
             
-            //---envoi des données de senDataServer dans le serveur----------------------
+            //---envoi des données de sendFormData dans le serveur----------------------
    
             //Construction d'un array d'id depuis le local storage
             let products = [];
@@ -444,9 +444,9 @@ function getForm(addProducts) {
                 document.location.href = 'confirmation.html?id='+ data.orderId;
                 })
                 .catch(error => alert("Erreur!"));
-        }else{
-            alert("Veuillez bien renseigner les champs de formulaires");
-        };         
+        }else{ 
+
+        }        
     });        
 //----------------------------Fin de validation de formulaire--------------------------------       
 //---Remplir les champs du formulaire automatiquement avec les valeurs du local storage
